@@ -4,6 +4,8 @@ The official public Codex plugin for [Taskara](https://taskara.de), the back-off
 
 Taskara connects to Codex through the production MCP endpoint at `https://taskara.de/api/mcp`. Authentication uses Taskara OAuth with PKCE. Your password stays on Taskara and is never shared with Codex.
 
+[Watch the verified MCP demo](plugins/taskara/assets/taskara-plugin-demo.mp4).
+
 ## Install
 
 Add the official marketplace and install the plugin:
