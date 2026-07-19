@@ -1,0 +1,46 @@
+{
+  "name": "taskara",
+  "version": "0.1.0",
+  "description": "Connect Codex directly to Taskara's back office for cleaning and facility-service teams.",
+  "author": {
+    "name": "Taskara",
+    "email": "support@taskara.de",
+    "url": "https://taskara.de"
+  },
+  "homepage": "https://taskara.de/docs",
+  "repository": "https://github.com/Rodriguez-Diego-web/taskara-codex-plugin",
+  "keywords": [
+    "taskara",
+    "facility-management",
+    "cleaning",
+    "scheduling",
+    "invoicing"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Taskara",
+    "shortDescription": "Run your Taskara back office from Codex.",
+    "longDescription": "Connect securely with Taskara OAuth, read live operational data, and create tasks or schedule entries directly from Codex. Browser operation remains available for unsupported workflows.",
+    "developerName": "Taskara",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "OAuth",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://taskara.de",
+    "privacyPolicyURL": "https://taskara.de/datenschutz",
+    "termsOfServiceURL": "https://taskara.de/agb",
+    "defaultPrompt": [
+      "Show me today's Taskara schedule and urgent tasks.",
+      "Create a Taskara job for tomorrow.",
+      "Draft a Taskara quote for a customer."
+    ],
+    "brandColor": "#0A0A0A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png"
+  }
+}

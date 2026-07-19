@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "taskara": {
+      "type": "http",
+      "url": "https://taskara.de/api/mcp",
+      "oauth_resource": "https://taskara.de/api/mcp",
+      "scopes": ["taskara:read", "taskara:write"]
+    }
+  }
+}
