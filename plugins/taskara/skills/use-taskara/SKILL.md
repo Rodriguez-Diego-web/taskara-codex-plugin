@@ -20,8 +20,19 @@ Read [references/product-map.md](references/product-map.md) when choosing a rout
 
 ## Choose the workflow
 
+- Use `get_owner_overview` for owner/admin summaries. Its schedule covers the requested range; task and invoice sections cover all dates. Report each section's completeness. Customer invoice balances are not Taskara subscription revenue, profit, or confirmed bank receipts.
+- Follow `nextCursor` until null for complete lists, even if a page has no visible matches. Keep organization, date range, and status filters unchanged. Do not call a partial list complete.
+- Use `create_invoice_draft` only after reading the exact customer, objects and catalog articles. Show quantities, agreed net unit prices, units, VAT, issue/due dates and customer; ask for confirmation. Never guess a missing price or tax rate. Use a fresh requestId per approved invoice, reuse it on retries, and never silently retry with a different ID. The result is an unsent draft with a reserved invoice number, not a sent invoice. Actual-time billing and manual non-catalog positions require the web workflow.
+- Use `assign_schedule_employees` only for a one-off unpublished draft, after reading it and confirming the exact replacement team. Supply its current team as expectedEmployeeIds. Published entries and recurring series require web review. No automatic assignments and no plan publication.
+- Also pass the just-read date and object as expectedStartDate and expectedObjectId for team changes. If a conflict is reported, re-read and ask again; never overwrite a concurrent change.
+- Taskara links use the currently selected organization in the browser. Include the organization name in the handoff and ask the user to select it before opening the record if necessary.
+- Existing task and schedule creation tools are not retry-safe. After an uncertain response, inspect live records before retrying; do not create duplicates.
+- For spoken/transcribed requests, repeat ambiguous customer names, dates, quantities and prices before a write. Do not assume the client supports plugin tools during live voice. These tools accept the same structured inputs regardless of how the user dictates the request; no audio is recorded by this plugin.
+
 - For summaries or questions, use the MCP list tools and answer only from their returned records. When falling back to the UI, mention when pagination, a filter, or limited visibility may make the answer incomplete.
 - For supported task or schedule creation explicitly requested by the user, use MCP and verify the returned ID and link. For other ordinary creations or edits, use the UI and verify the saved state.
+- Resolve schedule services through `list_articles` and pass exact article IDs and quantities to `create_schedule_entry`; never invent catalog entries.
+- Use `get_organization_settings` for non-sensitive configuration questions. Use `update_organization_preferences` only for an explicitly requested preference change and report every changed field.
 - For vague requests such as "manage tomorrow," inspect first, present the concrete proposed changes, and ask what to apply.
 - For bulk changes, deletion, sending an invoice or quote, sending invitations or messages, changing roles or ownership, subscription changes, or other externally consequential actions, show the exact target and effect and obtain confirmation immediately before the final action.
 - Prefer creating quotes and invoices as drafts. Do not send them unless the user explicitly asks and confirms the final recipient and document.
@@ -33,7 +44,7 @@ Resolve every named customer, object, employee, or document through MCP first an
 
 For schedule entries, obtain the object, date, start time, and employee assignment before saving unless the user explicitly requests an unplanned entry. Preserve recurrence, duration, notes, and assignment details given by the user. Check the visible schedule for conflicts and report any warning.
 
-For quotes and invoices, verify the customer, optional object, line descriptions, quantities, units, net prices, VAT, and due date. Report totals shown by Taskara instead of calculating a competing total. Keep unsent documents in draft status unless explicitly instructed otherwise.
+For quotes and invoices, verify the customer, optional object, line descriptions, quantities, units, net prices, VAT, and due date. Report totals shown by Taskara instead of calculating a competing total. Keep unsent documents in draft status. This plugin does not send invoices; use the web workflow and explicit recipient confirmation for sending.
 
 ## Use Taskara's assistant
 
@@ -41,4 +52,4 @@ Use `/app/assistant` only when the user's request spans Taskara areas not covere
 
 ## Finish
 
-After a write, report the returned record ID or verified visible change, the organization, and any draft or unsent state. Include the returned Taskara link when useful. If MCP or Taskara reports an error or permission restriction, relay it accurately and suggest the smallest next step; use `support@taskara.de` only when normal troubleshooting cannot resolve the issue.
+After a write, report the returned record ID or verified visible change, the organization, and any draft or unsent state. Include the returned Taskara link when useful. If MCP or Taskara reports an error or permission restriction, relay it accurately and suggest the smallest next step; use `mail@taskara.de` only when normal troubleshooting cannot resolve the issue.
