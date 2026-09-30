@@ -29,7 +29,7 @@ Taskara is a back-office application for cleaning and facility-service companies
 - Roles include Inhaber, Admin, Büro, Manager, and Mitarbeiter. Only owners may grant owner rights or perform owner-only destructive actions.
 - Free is intended for one organization without a team or AI document analysis. Starter includes up to five employees and AI analysis. Pro includes unlimited employees, prioritized support, and early feature access. Check `https://taskara.de/preise` for current pricing and terms instead of relying on memorized prices.
 - Subscription and payment management is under Einstellungen → Konto → Abo verwalten. Data export is under Einstellungen → Konto → Datenexport.
-- Documentation is at `https://taskara.de/docs`; support is at `https://taskara.de/support` or `support@taskara.de`.
+- Documentation is at `https://taskara.de/hilfe`; support is at `https://taskara.de/support` or `mail@taskara.de`.
 
 ## Supported assistant creations
 
@@ -43,9 +43,16 @@ The Taskara MCP server at `https://taskara.de/api/mcp` uses Taskara OAuth and ex
 - `list_customers`
 - `list_objects`
 - `list_employees`
+- `list_articles`
 - `list_tasks`
 - `list_schedule`
+- `get_organization_settings`
+- `update_organization_preferences`
 - `create_task`
 - `create_schedule_entry`
+- `list_invoices`
+- `get_owner_overview`
+- `create_invoice_draft`
+- `assign_schedule_employees`
 
-Use these tools before browser control. Taskara membership and role checks still apply to every call. Use the browser fallback for quotes, invoices, documents, settings, and other workflows not yet exposed through MCP.
+Use these tools before browser control. Taskara membership and role checks still apply to every call. Follow nextCursor on list tools until null. Invoice creation supports confirmed catalog-based drafts only, with retry protection; it neither sends invoices nor claims tracked hours. Assignment supports unpublished one-off drafts only. Use the browser for publishing, recurring assignment changes, actual-time billing, sending, quotes and other unsupported workflows.

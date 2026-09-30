@@ -1,13 +1,13 @@
 {
   "name": "taskara",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Connect Codex directly to Taskara's back office for cleaning and facility-service teams.",
   "author": {
-    "name": "Taskara",
-    "email": "support@taskara.de",
+    "name": "Diego Rodriguez",
+    "email": "mail@taskara.de",
     "url": "https://taskara.de"
   },
-  "homepage": "https://taskara.de/docs",
+  "homepage": "https://taskara.de/hilfe",
   "repository": "https://github.com/Rodriguez-Diego-web/taskara-codex-plugin",
   "keywords": [
     "taskara",
@@ -21,8 +21,8 @@
   "interface": {
     "displayName": "Taskara",
     "shortDescription": "Run your Taskara back office from Codex.",
-    "longDescription": "Connect securely with Taskara OAuth, read live operational data, and create tasks or schedule entries directly from Codex. Browser operation remains available for unsupported workflows.",
-    "developerName": "Taskara",
+    "longDescription": "Connect with Taskara OAuth for owner overviews, paginated live lists, tasks, unpublished jobs, draft team assignments and confirmed, unsent invoice drafts from your service catalog. Browser review remains required for publishing and sending.",
+    "developerName": "Diego Rodriguez",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
@@ -36,7 +36,7 @@
     "defaultPrompt": [
       "Show me today's Taskara schedule and urgent tasks.",
       "Create a Taskara job for tomorrow.",
-      "Draft a Taskara quote for a customer."
+      "Prepare an unsent Taskara invoice draft from my service catalog."
     ],
     "brandColor": "#0A0A0A",
     "composerIcon": "./assets/icon.png",
